@@ -9,10 +9,10 @@
 #import "BBMessageCellView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define HORIZONTAL_PADDING 10.0
-#define VERTICAL_PADDING 8.0
-#define ELEMENTS_SPACING 4.0
-#define AVATAR_SIZE 64.0
+#define HORIZONTAL_PADDING 16.0
+#define VERTICAL_PADDING 16.0
+#define ELEMENTS_SPACING 16.0
+#define AVATAR_SIZE 128.0
 
 @interface BBMessageCellView ()
 
@@ -133,8 +133,8 @@
     
     CGRect sourceImageFrame = CGRectMake(authorLabelFrame.origin.x+authorLabelFrame.size.width+ELEMENTS_SPACING,
                                          NAN,
-                                         16.0,
-                                         16.0);
+                                         32.0,
+                                         32.0);
     sourceImageFrame.origin.y = authorLabelFrame.origin.y + (authorLabelFrame.size.height-sourceImageFrame.size.height)/2.0;
     self.sourceImageView.frame = sourceImageFrame;
     
@@ -213,12 +213,12 @@
 
 + (UIFont *)_authorFont
 {
-    return [UIFont boldSystemFontOfSize:24.0];
+    return [UIFont boldSystemFontOfSize:64.0];
 }
 
 + (UIFont *)_contentFont
 {
-    return [UIFont systemFontOfSize:24.0];
+    return [UIFont systemFontOfSize:64.0];
 }
 
 + (CGFloat)_contentPhotoWidthForCellWidth:(CGFloat)width

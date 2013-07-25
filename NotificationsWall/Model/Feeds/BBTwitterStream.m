@@ -44,7 +44,7 @@
         self.wall = wall;
         self.refreshInterval = DEFAULT_INTERVAL;
         self.hashtags = DEFAULT_HASHTAGS;
-        self.twitterSearchClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"https://search.twitter.com/"]];
+        self.twitterSearchClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"https://api.twitter.com/1.1/search/"]];
         _backgroundQueue = dispatch_queue_create(NULL, NULL);
     }
     return self;
@@ -54,13 +54,13 @@
 {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithCapacity:3];
 	[parameters setObject:[self.hashtags componentsJoinedByString:@" OR "] forKey:@"q"];
-	[parameters setObject:[NSNumber numberWithInteger:10] forKey:@"rpp"];
+	[parameters setObject:[NSNumber numberWithInteger:10] forKey:@"count"];
     [parameters setObject:[NSNumber numberWithBool:YES] forKey:@"include_entities"];
 	if ([self.lastSearchID longLongValue] > 0) {
 		[parameters setObject:self.lastSearchID forKey:@"since_id"];
 	}
     
-    [self.twitterSearchClient getPath:@"search.json"
+    [self.twitterSearchClient getPath:@"tweets.json"
                            parameters:parameters
                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                   [self _processSearchResponse:responseObject];

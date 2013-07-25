@@ -37,9 +37,9 @@
         // Setup msgs stream
         self.socialWall = [BBSocialWall new];
         BBTwitterStream *twitterStream = [[BBTwitterStream alloc] initWithWall:self.socialWall];
-        twitterStream.hashtags = @[@"mmconf"];
+        twitterStream.hashtags = @[@"hackkrk"];
         BBInstagramStream *instagramStream = [[BBInstagramStream alloc] initWithWall:self.socialWall];
-        instagramStream.searchRadius = 1000;
+        instagramStream.searchRadius = 200;
         instagramStream.coordinates = FSLabs;
         self.socialWall.feeds = [NSMutableSet setWithObjects:twitterStream, instagramStream, nil];
 
